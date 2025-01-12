@@ -24,6 +24,8 @@ TermSyncTools is a CLI tool to backup and restore Termux environments. It allows
    ```sh
    apt-get update && apt-get upgrade -y
    apt-get install -y tar pigz rclone figlet lolcat
+   pkg install ruby
+   gem install lolcat
    ```
 
 2. **Configure `rclone`**:
