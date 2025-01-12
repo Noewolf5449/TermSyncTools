@@ -1,5 +1,3 @@
-Voici le contenu du fichier `README.md` avec toutes les fonctionnalités du script `TermSyncTools` :
-
 ```markdown
 # TermSyncTools
 
