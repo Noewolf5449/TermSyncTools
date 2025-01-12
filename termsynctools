@@ -9,6 +9,8 @@
 #                                           #
 #********************************************#
 
+#Copyright by Noewolf5449
+
 # Variables
 readonly SOURCE="$HOME"
 readonly DEST="$HOME/storage/shared/Termux/Backup"
