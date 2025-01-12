@@ -1,3 +1,4 @@
+Voici le contenu du fichier `README.md` avec toutes les fonctionnalités du script `TermSyncTools` :
 
 ```markdown
 # TermSyncTools
@@ -11,6 +12,10 @@ TermSyncTools is a CLI tool to backup and restore Termux environments. It allows
 - Automatically synchronize backups with Google Drive.
 - User-friendly interface with colorful output.
 - Easy to use with simple command-line options.
+- Support for multiple cloud services (Google Drive, Dropbox, OneDrive, Amazon S3).
+- Automatic scheduling of backups using cron jobs.
+- Delete existing backups.
+- Unschedule existing cron jobs.
 
 ## Installation
 
@@ -36,7 +41,7 @@ TermSyncTools is a CLI tool to backup and restore Termux environments. It allows
 
 To backup your home directory and installed packages, use the `-b` option:
 ```sh
-TermSyncTools -b
+TermSyncTools -b [home|pkgs]
 ```
 You will be prompted to enter a name for the backup. If no name is provided, a default name with the current date and time will be used.
 
@@ -44,9 +49,37 @@ You will be prompted to enter a name for the backup. If no name is provided, a d
 
 To restore your home directory and installed packages, use the `-r` option:
 ```sh
-TermSyncTools -r
+TermSyncTools -r [home|pkgs]
 ```
 You will be presented with a list of available backups to choose from.
+
+### Sync with Cloud Service
+
+To synchronize backups with a cloud service, use the `-s` option:
+```sh
+TermSyncTools -s [google|dropbox|onedrive|s3]
+```
+
+### Schedule Cron Jobs
+
+To configure automatic backups using cron jobs, use the `-c` option:
+```sh
+TermSyncTools -c
+```
+
+### Delete Backups
+
+To delete existing backups, use the `-d` option:
+```sh
+TermSyncTools -d
+```
+
+### Unschedule Cron Jobs
+
+To unschedule existing cron jobs, use the `-u` option:
+```sh
+TermSyncTools -u
+```
 
 ### Help
 
@@ -66,45 +99,30 @@ TermSyncTools -v
 
 ### Backup Example
 ```sh
-TermSyncTools -b
+TermSyncTools -b home
 ```
 Output:
 ```
-Enter the name for the backup (leave empty for default name): my_backup
 Backing up home
     Be patient...
 
-[ - ] home backed up and can be found in
-    /data/data/com.termux/files/home/storage/shared/Termux/my_backup_home.bak
-
-Backing up packages
-
-[ - ] Packages backed up and can be found in
-    /data/data/com.termux/files/home/storage/shared/Termux/my_backup_pkgs.bak
+[ ✓ ] home backed up and can be found in
+    /data/data/com.termux/files/home/storage/shared/Termux/Backup/my_backup_home.bak
 ```
 
 ### Restore Example
 ```sh
-TermSyncTools -r
+TermSyncTools -r home
 ```
 Output:
 ```
 Available home backups:
-    1. /data/data/com.termux/files/home/storage/shared/Termux/my_backup_home.bak
+    1. /data/data/com.termux/files/home/storage/shared/Termux/Backup/my_backup_home.bak
 Enter the number of the backup to restore: 1
 Restoring home
     Be patient...
 
-[ - ] home restored
-    start a new session.
-
-Available package backups:
-    1. /data/data/com.termux/files/home/storage/shared/Termux/my_backup_pkgs.bak
-Enter the number of the backup to restore: 1
-Restoring packages
-    Be patient...
-
-[ - ] packages restored
+[ ✓ ] home restored
     start a new session.
 ```
 
